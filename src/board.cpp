@@ -19,3 +19,7 @@ size_t Board::getRowsNumber(){
 Field Board::getFieldState(Coordinates coord){
     return m_fields.at(coord.i).at(coord.j);
 }
+
+void Board::setFieldState(Coordinates coord,Field field){
+    m_fields.at(coord.i).at(coord.j) = field;
+}

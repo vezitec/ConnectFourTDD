@@ -29,3 +29,11 @@ TEST_F(BoardTest, When_CreatedNewBoard_Expect_AllFieldsAreEmpty)
         }
     }
 }
+
+TEST_F(BoardTest, When_OneFieldIsSetToRedDisc_Expect_FieldHasRedDisc)
+{
+    size_t column0 = 0;
+    size_t row0 = 0;
+    testedBoard.setFieldState({column0,row0},Field::red);
+    EXPECT_EQ(testedBoard.getFieldState({column0,row0}),Field::red);
+}
