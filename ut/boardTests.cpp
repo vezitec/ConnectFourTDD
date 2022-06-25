@@ -37,3 +37,4 @@ TEST_F(BoardTest, When_OneFieldIsSetToRedDisc_Expect_FieldHasRedDisc)
     testedBoard.setFieldState({column0,row0},Field::red);
     EXPECT_EQ(testedBoard.getFieldState({column0,row0}),Field::red);
 }
+
