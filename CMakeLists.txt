@@ -1,5 +1,16 @@
 cmake_minimum_required(VERSION 3.12)
-project(ChangeMyName CXX)
+project(ConnectFourTDD CXX)
+
+SET(SRCS
+        src/board.cpp
+        src/game.cpp
+        src/player.cpp
+)
+SET(UTS
+        ut/boardTests.cpp
+        ut/gameTests.cpp
+        ut/playerTests.cpp
+)
 
 add_compile_options(-Wall -Wextra -pedantic -Werror)
 
@@ -11,16 +22,18 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(googletest)
+add_library(connectFour ${SRCS})
+target_compile_features(connectFour PUBLIC cxx_std_20)
+target_include_directories(connectFour PUBLIC include)
 
-add_executable(sample_test src/testZero.cpp src/sampleTests.cpp)
-target_include_directories(sample_test PUBLIC include)
-target_link_libraries(sample_test gmock_main gtest gmock)
-target_compile_features(sample_test PUBLIC cxx_std_20)
+add_executable(connectFour_tests ${UTS})
+target_link_libraries(connectFour_tests gmock_main gtest gmock)
+target_compile_features(connectFour_tests PUBLIC cxx_std_20)
 
 
 add_custom_target(run_tests
-                  COMMAND sample_test
-                  DEPENDS sample_test)
+                  COMMAND connectFour_tests
+                  DEPENDS connectFour_tests)
 
 enable_testing()
-add_test(tests sample_test)
+add_test(tests connectFour_tests)
