@@ -14,14 +14,18 @@ class BoardTest : public ::testing::Test
 
 TEST_F(BoardTest, When_CreatedNewBoard7Colums6ROWs_Expect_BoardColumsNumber7RowsNumber6)
 {
-    //Board testedBoard(7,6);
+    
     EXPECT_EQ(testedBoard.getColumnsNumber(),7);
     EXPECT_EQ(testedBoard.getRowsNumber(),6);
 }
 
-// TEST_F(BoardTest, When_CreatedNewBoard_Expect_AllFieldsAreEmpty)
-// {
-//     Board testedBoard(7,6);
-//     for (int i = 0; i<)
-//     EXPECT_EQ(testedBoard.getFieldState(i,j),Field::empty);
-// }
+TEST_F(BoardTest, When_CreatedNewBoard_Expect_AllFieldsAreEmpty)
+{
+    for (size_t i = 0; i<testedBoard.getColumnsNumber(); i++)
+    {
+        for (size_t j = 0; j<testedBoard.getRowsNumber(); j++)
+        {
+            EXPECT_EQ(testedBoard.getFieldState({i,j}),Field::empty);
+        }
+    }
+}
