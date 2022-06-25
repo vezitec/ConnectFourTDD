@@ -26,9 +26,10 @@ add_library(connectFour ${SRCS})
 target_compile_features(connectFour PUBLIC cxx_std_20)
 target_include_directories(connectFour PUBLIC include)
 
-add_executable(connectFour_tests ${UTS})
-target_link_libraries(connectFour_tests gmock_main gtest gmock)
+add_executable(connectFour_tests ${UTS} )
+target_link_libraries(connectFour_tests connectFour gmock_main gtest gmock)
 target_compile_features(connectFour_tests PUBLIC cxx_std_20)
+target_include_directories(connectFour_tests PUBLIC include)
 
 
 add_custom_target(run_tests
